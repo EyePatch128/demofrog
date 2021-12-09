@@ -8,11 +8,16 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        retro: ["retro"]
       },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      scrollbar: ['rounded']
+    },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
 }
