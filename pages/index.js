@@ -109,7 +109,7 @@ export default function Home() {
 
             <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
               
-              <div className="flex justify-between border-b pb-12">
+              <section className="flex justify-between border-b pb-12">
                 <div className="sm:text-center md:text-left">
                   <h1 className="text-4xl font-retro retro-shadow-text-gray tracking-wide font-extrabold text-gray-primary sm:text-5xl md:text-6xl">
                     <span className="block xl:inline retro-shadow-text-green">Data to enrich your</span>{' '}
@@ -132,13 +132,13 @@ export default function Home() {
                 <div className="hidden lg:flex items-end justify-center">
                     <img src="/crypto.svg" className="object-contain"></img>
                 </div>
-              </div>
+              </section>
 
-              <div className="mt-12 p-6 pb-12 overflow-hidden w-screen relative left-1/2 -translate-x-1/2">
+              <section className="mt-6 md:mt-12 p-2 md:p-6 pb-12 overflow-hidden w-screen relative left-1/2 -translate-x-1/2">
                   <Background />
                 <div className="relative z-10 mx-auto w-[90%] sm:w-4/5 flex flex-col gap-y-10">
                   <div className="text-center w-full">
-                    <h1 className="font-retro text-4xl sm:text-5xl lg:text-6xl sm:tracking-wider text-green-700">Recent audits</h1>
+                    <h1 className="font-retro text-4xl sm:text-5xl md:text-6xl sm:tracking-wider text-green-700">Recent audits</h1>
                   </div>
                   
                   <div className=''>
@@ -149,7 +149,7 @@ export default function Home() {
                     </Container>
                   </div>
                 </div>
-              </div>
+              </section>
 
               
               <section className='w-screen relative left-1/2 -translate-x-1/2 bg-gray-primary'>
