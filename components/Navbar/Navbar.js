@@ -40,7 +40,10 @@ function Navbar(){
                         {item.name}
                       </a>
                     ))}
-                    <a href="#" className="font-medium text-white bg-green-600 hover:bg-green-500 px-6 py-1 rounded-md">
+                    <a
+                        href={"#"}
+                        className={`inline-flex retro-shadow border-2 border-gray-primary text-base font-medium box-border px-6 py-2 md:py-2 md:px-6 text-white bg-green-600 hover:bg-green-700`}
+                    >
                       TOKEN ICO
                     </a>
                   </div>

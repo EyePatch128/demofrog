@@ -1,110 +1,63 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '../../tailwind.config.js'
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import "swiper/css/free-mode"
+import "swiper/css/scrollbar"
+
+import SwiperCore, {
+    FreeMode, Autoplay, Scrollbar
+} from 'swiper';
+
+// install Swiper modules
+SwiperCore.use([FreeMode, Scrollbar, Autoplay]);
 
 function Container(props){
-
-    const refContainer = useRef(null);
-    useEffect(()=>{
-        const slider = refContainer.current
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-        let goback = false
-
-        function inView(element) {
-            let windowHeight = window.innerHeight;
-            let scrollY = window.scrollY || window.pageYOffset;
-            
-            let scrollPosition = scrollY + windowHeight;
-            let elementPosition = element.getBoundingClientRect().top + scrollY + element.clientHeight;
-            
-            // is scroll position greater than element position? (is element in view?)
-            if (scrollPosition > elementPosition) {
-              return true;
-            }
-            
-            return false;
-        }
-
-        function checkGoback(){
-            if(slider.scrollLeft == 0){
-                setTimeout(()=>{   
-                    goback = false
-                }, 300)
-            } else if(slider.scrollLeft + slider.clientWidth >= slider.scrollWidth){
-                setTimeout(()=>{   
-                    goback = true
-                }, 300)
-            };
-        }
-
-        const handleMousedown = e=>{
-            isDown = true;
-            slider.classList.add('active');
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        }
-        slider.addEventListener("mousedown", handleMousedown);
-
-        const handleMouseleave = () => {
-            isDown = false;
-            slider.classList.remove('active');
-        }
-        slider.addEventListener('mouseleave', handleMouseleave);
-
-        const handleMouseup = () => {
-            isDown = false;
-            
-            slider.classList.remove('active');
-        }
-        slider.addEventListener('mouseup', handleMouseup);
-
-        const handleMousemove = (e) => {
-            if(!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2;
-            slider.scrollLeft = scrollLeft - walk;
-            if(walk < 0){
-                goback = false
-            }else{
-                goback = true
-            }
-
-            checkGoback()
-        }
-        slider.addEventListener('mousemove', handleMousemove);
-
-        // autoplay
-        // let isFullyScrolled = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth;
-        
-        function autoplay() {
-            if(inView(slider)){
-                checkGoback()
-                
-                if(goback){
-                    slider.scrollLeft = slider.scrollLeft - 1;
-                }else{
-                    slider.scrollLeft = slider.scrollLeft + 1;
-                }
-            }
-            requestAnimationFrame(autoplay);
-        }
-        requestAnimationFrame(autoplay);
-
-        return(()=>{
-            slider.removeEventListener("mousedown", handleMousedown);
-            slider.removeEventListener('mouseleave', handleMouseleave);
-            slider.removeEventListener('mouseup', handleMouseup);
-            slider.removeEventListener('mousemove', handleMousemove);
-        });
-    })
-
+    const fullConfig = resolveConfig(tailwindConfig)
+    
     return(
-        <div ref={refContainer} className="mt-8 overflow-x-hidden inline-flex justify-start gap-x-10 whitespace-nowrap">
-            {props.children}
-        </div>
+        <React.Fragment>
+            <Swiper 
+                slidesPerView={1} 
+                spaceBetween={10}
+                centeredSlides={false}
+                freeMode={{enabled: true}}
+                grabCursor={true}
+                scrollbar={{"hide": false}}
+                breakpoints={{
+                    468:{
+                        "slidesPerView": 2,
+                      "spaceBetween": 30,
+                    },
+                    [fullConfig.theme.screens.sm.replace("px", "")]: {
+                      "slidesPerView": 2,
+                      "spaceBetween": 40,
+                      "centeredSlides": false
+                    },
+                    [fullConfig.theme.screens.md.replace("px", "")]: {
+                      "slidesPerView": 3,
+                      "spaceBetween": 40,
+                      "centeredSlides": false
+                    },
+                    [fullConfig.theme.screens.lg.replace("px", "")]: {
+                      "slidesPerView": 4,
+                      "spaceBetween": 40,
+                      "centeredSlides": false
+                    }
+                }}
+                className="mySwiper"
+            >
+                <div className="">
+                    {props.children.map(elem=><SwiperSlide key={elem.key}>{elem}</SwiperSlide>)}
+                </div>
+
+            </Swiper>
+        </React.Fragment>
     );
 }
+
 
 export default Container
