@@ -42,7 +42,7 @@ function Navbar(){
                     ))}
                     <a
                         href={"#"}
-                        className={`inline-flex retro-shadow border-2 border-gray-primary text-base font-medium box-border px-6 py-2 md:py-2 md:px-6 text-white bg-green-600 hover:bg-green-700`}
+                        className={`inline-flex retro-btn border-2 border-gray-primary text-base font-medium box-border px-6 py-2 md:py-2 md:px-6 text-white bg-green-600 hover:bg-green-700`}
                     >
                       TOKEN ICO
                     </a>
