@@ -154,14 +154,14 @@ export default function Home() {
               
               <section className='w-screen relative left-1/2 -translate-x-1/2 bg-gray-primary mt-6'>
                     
-                <div className='lg:w-4/5 mx-auto py-6 border-x border-gray-500 border-opacity-40 px-4'>
+                <div className='lg:w-4/5 py-6 mx-4 sm:mx-auto border-l sm:border-l-0 lg:border-x lg:border-gray-500 border-opacity-40 px-4'>
                   
                   <div className="mt-12 md:w-4/5 lg:w-1/2 font-retro ">
                     <h2 className='text-green-400 text-base md:text-xl'>Why Frogchain</h2>
                     <h1 className='font-bold tracking-wide text-white sm:text-shadow-retro-green-sm text-3xl md:text-5xl'>An innovative approach to crypto</h1>
                   </div>
 
-                  <div className="flex flex-row justify-items-start my-12 gap-6 divide-x divide-gray-400 divide-dashed divide-opacity-60">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 my-12 gap-6 lg:divide-x lg:divide-gray-400 lg:divide-dashed divide-opacity-60">
                     {[...Array(4)].map((e,i)=>(
                       <div key={i} className="flex flex-col justify-items-start align-middle flex-shrink basis-1/4">
                         <div className="w-12 h-12 mx-2">
@@ -171,7 +171,7 @@ export default function Home() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
                           </svg>
                         </div>
-                        <div className={`break-words mt-2 w-full px-4 ${i==0? "px-0" : "px-4"}`}>
+                        <div className={`break-words mt-2 w-full ${i==0? "px-0" : "lg:px-4"}`}>
                           <h1 className="text-gray-100 font-bold font-retro tracking-wide text-lg">Something cool</h1>
                           <p className='mt-3 text-sm text-gray-300'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
