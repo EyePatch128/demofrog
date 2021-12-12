@@ -12,7 +12,11 @@
 
 @layer components{
   .retro-btn{
-    @apply shadow-retro-gray transform hover:translate-x-1 hover:translate-y-1 hover:shadow-none;
+    @apply shadow-retro-gray transition duration-75 transform hover:translate-x-1 hover:translate-y-1 hover:shadow-none;
+  }
+
+  .section-title{
+    @apply font-retro font-bold text-4xl sm:text-5xl md:text-6xl tracking-wide sm:tracking-wider;
   }
 }
 

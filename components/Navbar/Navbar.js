@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import React, {Fragment} from "react";
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
@@ -21,8 +23,8 @@ function Navbar(){
                     <div className="flex items-center justify-between w-full md:w-auto">
                       <a href="#">
                         <span className="sr-only">Workflow</span>
-                        <div className="h-8 w-auto sm:h-10">
-                          <img src="logo.png"/>
+                        <div className="w-10 h-10">
+                          <Image src="/logo.png" layout="responsive" objectFit="cover" width={45} height={45} />
                         </div>
                       </a>
                       <div className="-mr-2 flex items-center md:hidden">
