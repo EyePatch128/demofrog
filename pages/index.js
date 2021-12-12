@@ -117,13 +117,6 @@ export default function Home() {
       <Head>
         <title>Demo Frog</title>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-        <link
-            rel="preload"
-            href="/fonts/retro.ttf"
-            as="font"
-            crossOrigin=""
-          />
       </Head>
 
         <div className="relative lg:w-4/5 py-2 mx-auto">
@@ -144,10 +137,10 @@ export default function Home() {
                     fugiat veniam occaecat fugiat aliqua.
                   </p>
                   <div className="mt-5 sm:mt-8 sm:flex sm:justify-center md:justify-start">
-                    <div className="retro-btn">
+                    <div className="retro-btn text-base font-medium md:text-lg">
                       <Button>Get Started</Button>
                     </div>
-                    <div className="mt-3 sm:mt-0 sm:ml-3 retro-btn">
+                    <div className="mt-3 sm:mt-0 sm:ml-3 retro-btn text-base font-medium md:text-lg">
                       <Button style="text-green-700 bg-green-100 hover:bg-green-200">Live Demo</Button>
                     </div>
                   </div>
@@ -171,6 +164,12 @@ export default function Home() {
                           <Audit key={elem.id} imageSrc={elem.imageSrc} imageAlt={elem.imageAlt} title={elem.title} subTitle={elem.subTitle} cta={elem.cta} />
                         ))}
                     </Container>
+                    <div className="mt-16 mb-24 flex justify-center">
+                      <div className='retro-btn w-full sm:w-48 text-2xl font-bold tracking-wider font-retro'>
+                        <Button href="/audits">More</Button>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </section>
