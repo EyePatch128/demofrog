@@ -9,7 +9,15 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+          <link
+              rel="preload"
+              href="/fonts/retro.ttf"
+              as="font"
+              crossOrigin=""
+            />
+          </Head>
         <body className="overflow-x-hidden">
           <Main />
           <NextScript />
