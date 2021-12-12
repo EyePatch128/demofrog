@@ -10,6 +10,7 @@ function Audit(props){
                 width={192}
                 height={320}
                 objectFit="contain"
+                className="select-none"
             />
         </div>
     );
