@@ -5,7 +5,6 @@ import Image from "next/image"
 // import "swiper/css/bundle";
 
 import Background from "../components/Background/Background"
-import Navbar from "../components/Navbar/Navbar"
 import Button from "../components/Button/PrimaryButton"
 import Audit from "../components/Audit/Audit"
 import Container from '../components/Audit/Container'
