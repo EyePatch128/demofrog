@@ -119,7 +119,7 @@ export default function Home() {
       </Head>
 
         
-      <div className="pb-8 sm:pb-16 md:pb-20 lg:w-full lg:pb-28 xl:pb-32">  
+      <div className="pb-8 sm:pb-16 md:pb-20 w-full lg:pb-28 xl:pb-32">  
           <section className="flex justify-between border-b pb-12">
             <div className="sm:text-center md:text-left">
               <h1 className="text-4xl font-retro text-shadow-retro-gray tracking-wide font-extrabold text-gray-primary sm:text-5xl md:text-6xl">
@@ -147,7 +147,7 @@ export default function Home() {
 
           <section className="mt-6 md:mt-12 p-2 md:p-6 pb-12 overflow-hidden w-screen relative left-1/2 -translate-x-1/2">
               <Background />
-            <div className="relative z-10 mx-auto lg:w-4/5 flex flex-col gap-y-10">
+            <div className="relative z-10 mx-auto lg:w-4/5 2xl:max-w-screen-xl flex flex-col gap-y-10">
               <div className="text-center w-full">
                 <h1 className="section-title text-green-600 text-shadow-retro-gray-sm">Recent audits</h1>
               </div>
@@ -171,7 +171,7 @@ export default function Home() {
           
           <section className='w-screen relative left-1/2 -translate-x-1/2 bg-gray-primary'>
                 
-            <div className='lg:w-4/5 py-6 mx-4 sm:mx-auto border-l sm:border-l-0 lg:border-x lg:border-gray-500 border-opacity-40 px-4'>
+            <div className='lg:w-4/5 2xl:max-w-screen-xl py-6 mx-4 sm:mx-auto border-l sm:border-l-0 lg:border-x lg:border-gray-500 border-opacity-40 px-4'>
               
               <div className="mt-12 md:w-4/5 lg:w-1/2 font-retro ">
                 <h2 className='text-green-400 text-base md:text-xl'>Why Frogchain</h2>

@@ -15,7 +15,7 @@ const navigation = [
 function Navbar(){
     return(
         
-        <header>
+        <header className="">
             <Popover>
               <div className="relative pt-2 px-4 sm:px-6 lg:px-8">
                 <nav className="relative flex items-center justify-between sm:h-10" aria-label="Global">
