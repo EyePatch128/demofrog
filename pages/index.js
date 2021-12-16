@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from "next/image"
+// import Image from "next/image"
 import Link from "next/link"
 
 // // eslint-disable-next-line
@@ -210,7 +210,8 @@ function Home({data}) {
                     return(
                       <div key={i} className='transform duration-75 hover:scale-105'>
                         <a href={elem.href}>
-                          <Image src={elem.logo} alt={elem.name} width={45} height={45} />
+                          {/* <Image src={elem.logo} alt={elem.name} width={45} height={45} /> */}
+                          <img src={elem.logo} alt={elem.name} className='w-12 h-12'/>
                         </a>
                       </div>
                     );

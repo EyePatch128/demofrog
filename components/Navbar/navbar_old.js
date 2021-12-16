@@ -1,12 +1,12 @@
+import Image from "next/image";
+import Link from "next/link";
 
 import React, {Fragment, useState, useEffect} from "react";
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { fetchAPI } from "../../lib/api";
 
-
-
-function NavbarTemp(){
+function Navbar(){
   const bigButton = "Join";
   const [navigation, setNavigation] = useState([]);
   useEffect(async () => {
@@ -59,9 +59,11 @@ function NavbarTemp(){
                         "inline-flex retro-btn border-2 border-gray-primary text-base tracking-wide font-medium box-border px-8 py-2 md:py-2 md:px-8 text-white bg-green-600 hover:bg-green-700"
                         
                         return (
-                            <a className={style} key={item.name} href={item.href}>
+                          <Link key={item.name} href={item.href}>
+                            <a className={style}>
                               {item.name}
                             </a>
+                          </Link>
                         )
                     })}
                   </div>
@@ -99,18 +101,21 @@ function NavbarTemp(){
                         const style = "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                           if(item.name != bigButton)
                             return (
-                                <a className={style} key={item.name} href={item.href}>
+                              <Link key={item.name} href={item.href}>
+                                <a className={style}>
                                   {item.name}
                                 </a>
+                              </Link>
                             );
                       })}
                     </div>
                       {navigation && navigation.map(item =>(
                         item.name == bigButton? 
-                            <a key={item.name} href={item.href} className="block w-full px-5 py-3 text-center font-medium text-green-600 bg-gray-50 hover:bg-gray-100">
+                          <Link key={item.name} href={item.href}>
+                            <a className="block w-full px-5 py-3 text-center font-medium text-green-600 bg-gray-50 hover:bg-gray-100">
                               {item.name}
                             </a>
-                          : null
+                          </Link> : null
                       ))}
                   </div>
                 </Popover.Panel>
@@ -120,5 +125,3 @@ function NavbarTemp(){
 
     );
 }
-
-export default NavbarTemp

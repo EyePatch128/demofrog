@@ -5,7 +5,7 @@ import Button from "../components/Button/PrimaryButton"
 import Audit from "../components/Audit/Audit"
 import Section from "../components/Section/General"
 
-function Audits(props){
+function Audits(){
     return(
         <>
             <Head>

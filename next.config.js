@@ -1,7 +1,14 @@
 module.exports = {
-    i18n: {
-      locales: ['en-US'],
- 
-      defaultLocale: 'en-US',
-    },
-  }
+  images: {
+    loader: "imgix",
+    path: ""
+  },
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      '/': { page: '/' }
+    }
+  },
+}
