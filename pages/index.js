@@ -13,30 +13,9 @@ import Button from "../components/Button/PrimaryButton"
 import Audit from "../components/Audit/Audit"
 import Container from '../components/Audit/Container'
 
+import ConstructionModal from '../components/Construction'
 
-function Construction(props){
-  return(
-      <>
-          <Head>
-              <title>Frogchain</title>
-              <link rel="shortcut icon" href="/favicon.ico" />
-              <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
-              <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"/>
-              <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"/>
-          </Head>
-          
-          <div className='absolute top-0 left-0 bg-white z-50 w-screen h-screen overflow-hidden'>
-              <div className='flex flex-col justify-center place-items-center mt-12'>
-                  <div className='w-64 h-64 md:h-96 md:w-96'>
-                      <Image src="/frog_construction.png" layout='responsive' width={400} height={400} priority={true}  />
-                  </div>
-                  <h1 className='font-sans text-xl text-center'>Our website is currently under construction<br/>We should be back shortly. Thank you for your patience.</h1>
-              </div>
-          </div>
-      </>
-  );
-}
-export default Construction
+
 
 
 
@@ -143,10 +122,14 @@ function Home({data}) {
   return (
     <>
       <Head>
-        <title>Demo Frog</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Frogchain</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"/>
       </Head>
 
+      <ConstructionModal />
         
       <div className="pb-8 sm:pb-16 md:pb-20 w-full lg:pb-28 xl:pb-32">  
           <Section
@@ -241,16 +224,18 @@ function Home({data}) {
   )
 }
 
+export default Home;
 
-// export async function getStaticProps(context) {
-//   const data = await fetchAPI("/api/homepage?populate=*")
-//   if (!data) {
-//     return {
-//       notFound: true,
-//     }
-//   }
-//   return {
-//     props: {data: data.data},
-//   }
-// }
+
+export async function getStaticProps(context) {
+  const data = await fetchAPI("/api/homepage?populate=*")
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+  return {
+    props: {data: data.data},
+  }
+}
 
