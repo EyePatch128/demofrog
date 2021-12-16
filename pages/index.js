@@ -1,10 +1,14 @@
 import Head from 'next/head'
 import Image from "next/image"
+import Link from "next/link"
 
 // // eslint-disable-next-line
 // import "swiper/css/bundle";
 
+import { fetchAPI } from '../lib/api'
+
 import Background from "../components/Background/Background"
+import Section from '../components/Section/General'
 import Button from "../components/Button/PrimaryButton"
 import Audit from "../components/Audit/Audit"
 import Container from '../components/Audit/Container'
@@ -110,7 +114,7 @@ const SocialMedia = [
 ]
 
 
-export default function Home() {
+export default function Home({data}) {
   return (
     <>
       <Head>
@@ -120,36 +124,21 @@ export default function Home() {
 
         
       <div className="pb-8 sm:pb-16 md:pb-20 w-full lg:pb-28 xl:pb-32">  
-          <section className="flex justify-between border-b pb-12">
-            <div className="sm:text-center md:text-left">
-              <h1 className="text-4xl font-retro text-shadow-retro-gray tracking-wide font-extrabold text-gray-primary sm:text-5xl md:text-6xl">
-                <span className="block xl:inline text-shadow-retro-green">Data to enrich your</span>{' '}
-                <span className="block text-green-600 xl:inline">online business</span>
-              </h1>
-              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-                fugiat veniam occaecat fugiat aliqua.
-              </p>
-              <div className="mt-5 sm:mt-8 sm:flex sm:justify-center md:justify-start">
-                <div className="retro-btn text-base font-medium md:text-lg">
-                  <Button>Get Started</Button>
-                </div>
-                <div className="mt-3 sm:mt-0 sm:ml-3 retro-btn text-base font-medium md:text-lg">
-                  <Button style="text-green-700 bg-green-100 hover:bg-green-200">Live Demo</Button>
-                </div>
-              </div>
-            </div>
-
-            <div className="hidden lg:flex items-end justify-center">
-                <img src="/crypto.svg" className="object-contain"></img>
-            </div>
-          </section>
-
+          <Section
+              title={data.attributes.introduction.title}
+              subtitle={data.attributes.introduction.subtitle}
+              buttons={[{type: "primary", text: "Get started"}, {type: "secondary", text: "Live demo"}]}
+              illustration="/crypto.svg"
+          />
+          
           <section className="mt-6 md:mt-12 p-2 md:p-6 pb-12 overflow-hidden w-screen relative left-1/2 -translate-x-1/2">
               <Background />
             <div className="relative z-10 mx-auto lg:w-4/5 2xl:max-w-screen-xl flex flex-col gap-y-10">
               <div className="text-center w-full">
-                <h1 className="section-title text-green-600 text-shadow-retro-gray-sm">Recent audits</h1>
+                <h1 className="section-title text-green-600 text-shadow-retro-gray-sm">{data.attributes.recent_audits.title}</h1>
+                <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                  {data.attributes.recent_audits.subtitle}
+                </p>
               </div>
               
               <div className='px-2'>
@@ -174,8 +163,8 @@ export default function Home() {
             <div className='lg:w-4/5 2xl:max-w-screen-xl py-6 mx-4 sm:mx-auto border-l sm:border-l-0 lg:border-x lg:border-gray-500 border-opacity-40 px-4'>
               
               <div className="mt-12 md:w-4/5 lg:w-1/2 font-retro ">
-                <h2 className='text-green-400 text-base md:text-xl'>Why Frogchain</h2>
-                <h1 className='font-bold tracking-wide text-white sm:text-shadow-retro-green-sm text-3xl md:text-5xl'>An innovative approach to crypto</h1>
+                <h2 className='text-green-400 text-base md:text-xl'>{data.attributes.description.subtitle}</h2>
+                <h1 className='font-bold tracking-wide text-white sm:text-shadow-retro-green-sm text-3xl md:text-5xl'>{data.attributes.description.title}</h1>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 my-12 gap-6 lg:divide-x lg:divide-gray-400 lg:divide-dashed divide-opacity-60">
@@ -205,8 +194,8 @@ export default function Home() {
           <section className="mt-24">
             <div className='flex flex-col gap-y-16'>
               <div className='sm:text-center flex flex-col gap-y-6 sm:place-items-center'>
-                  <h1 className='section-title text-gray-primary text-shadow-retro-green'>Join the community</h1>
-                  <h3 className='text-base sm:w-2/3 md:w-1/2'>Forgchain is a rapidly evolving crypto coin bringing together passiontes from all over the world</h3>
+                  <h1 className='section-title text-gray-primary text-shadow-retro-green'>{data.attributes.community.title}</h1>
+                  <h3 className='text-base sm:w-2/3 md:w-1/2'>{data.attributes.community.subtitle}</h3>
               </div>
               <div className='flex gap-8 sm:gap-12 justify-center'>
                   {SocialMedia.map((elem, i)=>{
@@ -225,4 +214,17 @@ export default function Home() {
 
     </>
   )
+}
+
+
+export async function getStaticProps(context) {
+  const data = await fetchAPI("/api/homepage?populate=*")
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+  return {
+    props: {data: data.data},
+  }
 }
