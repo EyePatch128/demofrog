@@ -24,7 +24,7 @@ function Container(props){
                 slidesPerView={1} 
                 spaceBetween={10}
                 centeredSlides={false}
-                freeMode={{enabled: true}}
+                freeMode={{enabled: true,minimumVelocity: 0.05, momentumVelocityRatio: 0.6}}
                 grabCursor={true}
                 scrollbar={{"hide": false}}
                 breakpoints={{

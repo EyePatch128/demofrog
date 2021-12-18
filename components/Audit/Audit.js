@@ -1,8 +1,8 @@
-// import Image from "next/image";
+import Image from "next/image";
 
 function Audit(props){
     return(
-        <div className="group my-6 flex-shrink-0 cursor-pointer shadow-retro-green retro-btn">
+        <div className="group my-6 flex-shrink-0 cursor-pointer">
             {/* <Image
                 src={props.imageSrc}
                 alt={props.imageAlt}
@@ -13,12 +13,14 @@ function Audit(props){
                 objectFit="contain"
                 className="select-none"
             /> */}
-            <img 
-                src={props.imageSrc}
-                alt={props.imageAlt}
-                className="object-fit max-h-96"
+            <a href={props.href}>
+                <img 
+                    src={props.imageSrc}
+                    alt={props.imageAlt}
+                    className="object-contain select-none shadow-retro-green retro-btn max-h-96"
 
-            />
+                />
+            </a>
         </div>
     );
 }

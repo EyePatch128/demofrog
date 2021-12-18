@@ -17,7 +17,7 @@ function Section(props){
                 {props.buttons && props.buttons.map((elem, i)=>{
                     return(
                         <div key={i} className="mt-3 sm:mt-0 sm:ml-3 retro-btn">
-                            <Button style={`${elem.type == "secondary" ? "text-green-700 bg-green-100 hover:bg-green-200": ""}`}>{elem.text}</Button>
+                            <Button href={elem.href} style={`${elem.type == "secondary" ? "text-green-700 bg-green-100 hover:bg-green-200": ""}`}>{elem.text}</Button>
                         </div>
                     )
                 })}
