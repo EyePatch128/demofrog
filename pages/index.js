@@ -1,9 +1,7 @@
 import Head from 'next/head'
 // import Image from "next/image"
-// import Link from "next/link"
+import Link from "next/link"
 
-// // eslint-disable-next-line
-// import "swiper/css/bundle";
 
 import Layout from "../components/Layout"
 import Background from "../components/Background/Background"
@@ -117,11 +115,13 @@ function Home(props) {
               <div className='flex gap-8 sm:gap-12 justify-center'>
                   {data.attributes.community.social.map((elem, i)=>{
                     return(
-                      <div key={elem.id} className='transform duration-75 hover:scale-105 shadow-lg'>
-                        <a href={elem.url} onClick={(e)=>{e.preventDefault(); window.open(e.currentTarget.href, '_blank')}}>
-                          {/* <Image src={elem.logo} alt={elem.name} width={45} height={45} /> */}
-                          <img src={elem.logo.data.attributes.url} alt={elem.name} className='w-12 h-12'/>
-                        </a>
+                      <div key={elem.id} className='transform duration-75 hover:scale-105 shadow-lg w-12 h-12'>
+                        <Link href={elem.url} passHref>
+                          <a onClick={(e)=>{e.preventDefault(); window.open(e.currentTarget.href, '_blank')}}>
+                            {/* <Image src={elem.logo.data.attributes.url} alt={elem.name} width={45} height={45} layout="responsive" objectFit='contain' /> */}
+                            <img src={elem.logo.data.attributes.url} alt={elem.name} className='w-12 h-12'/>
+                          </a>
+                        </Link>
                       </div>
                     );
                   })}

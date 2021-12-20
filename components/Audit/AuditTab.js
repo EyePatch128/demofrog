@@ -96,16 +96,20 @@ function AuditTab({data}) {
                             <p className='text-xs sm:text-sm break-words'>{elem.description}</p>
                           </div>
                           <div className='hidden sm:block'>
-                            <a href={elem.href} className="float-right text-white bg-green-700 hover:bg-green-800 transition duration-75 focus:ring-4 focus:ring-green-300 rounded-sm text-xs lg:text-sm px-5 py-2.5 text-center mr-2 mb-2 cursor-pointer">
-                              Learn more
-                            </a>
+                            <Link href={elem.href} passHref>
+                              <a  className="float-right text-white bg-green-700 hover:bg-green-800 transition duration-75 focus:ring-4 focus:ring-green-300 rounded-sm text-xs lg:text-sm px-5 py-2.5 text-center mr-2 mb-2 cursor-pointer">
+                                Learn more
+                              </a>
+                            </Link>
                           </div>
                         </div>
                       </div>
                       <div className='flex sm:hidden drop-shadow-2xl border-2 mt-0.5 border-black'>
-                        <a href={elem.href} className="w-full text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 text-xs px-5 py-2.5 text-center cursor-pointer">
-                          Learn more
-                        </a>
+                        <Link href={elem.href} passHref>
+                          <a className="w-full text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 text-xs px-5 py-2.5 text-center cursor-pointer">
+                            Learn more
+                          </a>
+                        </Link>
                       </div>
                   </div>
                   );
