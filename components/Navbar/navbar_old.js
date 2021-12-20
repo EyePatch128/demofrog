@@ -1,4 +1,4 @@
-// import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 
 import React, {Fragment, useState, useEffect} from "react";
@@ -6,15 +6,26 @@ import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { fetchAPI } from "../../lib/api";
 
-function Navbar(props){
+function Navbar(){
   const bigButton = "Join";
-  const navigation = props.navigation.map(elem=>{
-    return{
-      id: elem.id,
-      name: elem.attributes.title,
-      href: elem.attributes.slug.startsWith("/") ? elem.attributes.slug : `/${elem.attributes.slug}`
-    }
-  })
+  const [navigation, setNavigation] = useState([]);
+  useEffect(async () => {
+    let {data} = await fetchAPI("/api/navigations")
+    data = data.map((elem, i)=>{
+      // return({
+      //   id: elem.id,
+      //   name: elem.attributes.title,
+      //   href: elem.attributes.slug.startsWith("/") ? elem.attributes.slug : `/${elem.attributes.slug}`
+      // })
+      return({
+        id: elem.id,
+        name: elem.attributes.title,
+        href: "/"
+      })
+    });
+    setNavigation(data);
+  }, []);
+
 
     return(
         
@@ -24,10 +35,10 @@ function Navbar(props){
                 <nav className="relative flex items-center justify-between sm:h-10" aria-label="Global">
                   <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                     <div className="flex items-center justify-between w-full md:w-auto">
-                      <a href="/">
-                        <span className="sr-only">Frogchain</span>
-                        <div className="w-10 h-10 hidden">
-                          {/* <Image src="/frog_construction.png" layout="responsive" objectFit="contain" width={45} height={45} /> */}
+                      <a href="#">
+                        <span className="sr-only">Workflow</span>
+                        <div className="w-10 h-10">
+                          {/* <Image src="/logo.png" layout="responsive" objectFit="cover" width={45} height={45} /> */}
                           <img src="/logo.png" alt="Logo frogchain" className='w-12 h-12'/>
                         </div>
                       </a>
@@ -48,7 +59,7 @@ function Navbar(props){
                         "inline-flex retro-btn border-2 border-gray-primary text-base tracking-wide font-medium box-border px-8 py-2 md:py-2 md:px-8 text-white bg-green-600 hover:bg-green-700"
                         
                         return (
-                          <Link key={item.name} href={item.href ||"#"} passHref>
+                          <Link key={item.name} href={item.href}>
                             <a className={style}>
                               {item.name}
                             </a>
@@ -90,7 +101,7 @@ function Navbar(props){
                         const style = "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                           if(item.name != bigButton)
                             return (
-                              <Link key={item.name} href={item.href ||"#"} passHref>
+                              <Link key={item.name} href={item.href}>
                                 <a className={style}>
                                   {item.name}
                                 </a>
@@ -100,7 +111,7 @@ function Navbar(props){
                     </div>
                       {navigation && navigation.map(item =>(
                         item.name == bigButton? 
-                          <Link key={item.name} href={item.href ||"#"} passHref>
+                          <Link key={item.name} href={item.href}>
                             <a className="block w-full px-5 py-3 text-center font-medium text-green-600 bg-gray-50 hover:bg-gray-100">
                               {item.name}
                             </a>
