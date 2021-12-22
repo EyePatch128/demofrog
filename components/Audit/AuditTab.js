@@ -20,13 +20,16 @@ function AuditTab({data}) {
       score: elem.attributes.score,
       imageUrl: elem.attributes.image.data.attributes.url,
       imageName: elem.attributes.image.data.attributes.name,
-      href: `/audits/${elem.id}`
+      href: elem.attributes.url || `/audits/${elem.id}`,
+      publishedAt: elem.attributes.publishedAt
     })
   }
 
   let [categories] = useState({
     Recent: data.map(elem=>{
-      return audit_map(elem)
+        return audit_map(elem)
+      }).sort(function(a, b) {
+        return Date.parse(b.publishedAt) - Date.parse(a.publishedAt);
     }),
     Popular:
       data.map(elem=>{

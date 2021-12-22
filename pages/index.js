@@ -16,6 +16,26 @@ import { get_homepage } from '../lib/query/homepage'
 import { get_navigation } from '../lib/query/navigation'
 
 
+const DAPP = [
+  {
+    title: "NFT Marketplace",
+    subtitle: "[Q4 2021]",
+    description: "This is a quick description of the DAPP. To make users want to visit it",
+    cta: "Launch DAPPA",
+  },
+  {
+    title: "NFT Marketplace",
+    subtitle: "[Q4 2021]",
+    description: "This is a quick description of the DAPP. To make users want to visit it",
+    cta: "Launch DAPPA",
+  },
+  {
+    title: "NFT Marketplace",
+    subtitle: "[Q4 2021]",
+    description: "This is a quick description of the DAPP. To make users want to visit it",
+    cta: "Launch DAPPA",
+  }
+]
 
 
 function Home(props) {
@@ -77,34 +97,56 @@ function Home(props) {
           </section>
 
           
-          <section className='w-screen relative left-1/2 -translate-x-1/2 bg-gray-primary'>
-                
-            <div className='lg:w-4/5 2xl:max-w-screen-xl py-6 mx-4 sm:mx-auto border-l sm:border-l-0 lg:border-x lg:border-gray-500 border-opacity-40 px-4'>
-              
-              <div className="mt-12 md:w-4/5 lg:w-1/2 font-retro ">
-                <h2 className='text-green-400 text-base md:text-xl'>{data.attributes.description.subtitle}</h2>
-                <h1 className='font-bold tracking-wide text-white sm:text-shadow-retro-green-sm text-3xl md:text-5xl'>{data.attributes.description.title}</h1>
+          <div className='w-screen relative left-1/2 -translate-x-1/2 bg-gray-primary'>
+            <section className='lg:w-4/5 2xl:max-w-screen-xl mx-4 sm:mx-auto border-l sm:border-l-0 lg:border-x lg:border-gray-500 border-opacity-40 py-12'>
+              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 py-6 px-4 gap-10'>
+                  {DAPP.map((elem, idx)=>{
+                    return(
+                      <div key={idx} className='flex flex-col place-items-center border bg-white rounded-lg pt-8 pb-6 gap-6 shadow-xl shadow-zinc-900'>
+                        <img src="/frog_construction.png" className='max-h-32'/>
+                        <div className='text-center space-y-6 px-4'>
+                          <div>
+                            <h1 className='text-lg sm:text-2xl font-medium'>{elem.title}</h1>
+                            <h2 className='text-base sm:text-lg text-gray-500'>{elem.subtitle}</h2>
+                          </div>
+                          <p className='text-sm sm:text-base'>{elem.description}</p>
+                        </div>
+                        <a href="#" className='text-sm text-white bg-green-600 hover:bg-green-700 transition duration-75 px-7 py-3 font-medium rounded-md mt-6 shadow-md shadow-slate-400'>{elem.cta}</a>
+                      </div>
+                    );
+                  })}
               </div>
+              <div className='retro-btn w-4/5 sm:w-48 text-2xl font-bold tracking-wider font-retro mx-auto mt-12'>
+                <Button href="#">More</Button>
+              </div>
+            </section>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 my-12 gap-6 lg:divide-x lg:divide-gray-400 lg:divide-dashed divide-opacity-60">
-                {data.attributes.description.caracteristic.map((elem, i)=>(
-                  <div key={elem.id} className="flex flex-col justify-items-start align-middle flex-shrink basis-1/4">
-                    <div className="w-12 h-12 mx-2">
-                      <img href={elem.image.data? elem.image.data.attributes.url : null} alt={elem.image.data? elem.image.data.attributes.name : null} />
+            <section className='lg:w-4/5 2xl:max-w-screen-xl mx-4 sm:mx-auto'>
+              <div className='py-6 border-l sm:border-l-0 lg:border-x lg:border-gray-500 border-opacity-40 px-4'>
+                <div className="mt-12 md:w-4/5 lg:w-1/2 font-retro ">
+                  <h2 className='text-green-400 text-base md:text-xl'>{data.attributes.description.subtitle}</h2>
+                  <h1 className='font-bold tracking-wide text-white sm:text-shadow-retro-green-sm text-3xl md:text-5xl'>{data.attributes.description.title}</h1>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 my-12 gap-6 lg:divide-x lg:divide-gray-400 lg:divide-dashed divide-opacity-60">
+                  {data.attributes.description.caracteristic.map((elem, i)=>(
+                    <div key={elem.id} className="flex flex-col justify-items-start align-middle flex-shrink basis-1/4">
+                      {/* <div className="w-12 h-12 mx-2">
+                        <img href={elem.image.data? elem.image.data.attributes.url : null} alt={elem.image.data? elem.image.data.attributes.name : null} />
+                      </div> */}
+                      <div className={`break-words mt-2 w-full ${i==0? "px-0" : "lg:px-2"}`}>
+                        <h1 className="text-gray-100 font-bold font-retro tracking-wide text-lg">{elem.title}</h1>
+                        <p className='mt-3 text-sm text-gray-300'>
+                          {elem.description}
+                        </p>
+                      </div>  
                     </div>
-                    <div className={`break-words mt-2 w-full ${i==0? "px-0" : "lg:px-2"}`}>
-                      <h1 className="text-gray-100 font-bold font-retro tracking-wide text-lg">{elem.title}</h1>
-                      <p className='mt-3 text-sm text-gray-300'>
-                        {elem.description}
-                      </p>
-                    </div>  
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
 
-
-            </div>
-          </section>
+            </section>
+          </div>
 
           <section className="mt-24">
             <div className='flex flex-col gap-y-16'>
