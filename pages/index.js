@@ -20,6 +20,7 @@ function Home(props) {
   const data = props.homepage
   const navigation = props.navigation.data
   const {introduction, recent_audits, dapps, description, community} = data.attributes
+  console.log(dapps)
   return (
     <Layout navigation={navigation}>
       <Head>
@@ -79,8 +80,8 @@ function Home(props) {
           <div className='w-screen relative left-1/2 -translate-x-1/2 bg-gray-primary'>
             <section className='lg:w-4/5 2xl:max-w-screen-xl mx-4 px-4 py-12 space-y-14 sm:mx-auto border-l sm:border-l-0 lg:border-x lg:border-gray-500 border-opacity-40 '>
               <div className="mt-12 md:w-4/5 lg:w-1/2 font-retro ">
-                <h2 className='text-green-400 text-base md:text-xl'>{dapps.subtitle}</h2>
                 <h1 className='font-bold tracking-wide text-white sm:text-shadow-retro-green-sm text-3xl md:text-5xl'>{dapps.title}</h1>
+                <h2 className='text-green-400 text-base md:text-xl'>{dapps.subtitle}</h2>
               </div>
               <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 py-6 gap-10'>
                   {dapps.dapps.data.map((elem, idx)=>{
