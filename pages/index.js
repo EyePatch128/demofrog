@@ -20,7 +20,7 @@ function Home(props) {
   const data = props.homepage
   const navigation = props.navigation.data
   const {introduction, recent_audits, dapps, description, community} = data.attributes
-  console.log(dapps)
+
   return (
     <Layout navigation={navigation}>
       <Head>
@@ -31,7 +31,9 @@ function Home(props) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"/>
       </Head>
         
-      <div className="pb-8 sm:pb-16 md:pb-20 w-full lg:pb-28 xl:pb-32">  
+      <div className="pb-8 sm:pb-16 md:pb-20 w-full lg:pb-28 xl:pb-32">
+
+          {/* Introduction */}
           <Section
               title={introduction.title.split("|")[0]}
               title_green={introduction.title.split("|")[1]}
@@ -39,7 +41,43 @@ function Home(props) {
               buttons={introduction.buttons}
               illustration={introduction.illustration.data.attributes.url}
           />
-          
+
+          {/* DAPPS */}
+          <div className='w-screen relative left-1/2 -translate-x-1/2 bg-gray-primary mt-12'>
+            <section className='lg:w-4/5 2xl:max-w-screen-xl mx-4 px-4 py-12 space-y-14 sm:mx-auto border-l sm:border-l-0 lg:border-x lg:border-gray-500 border-opacity-40 '>
+              <div className="mt-12 md:w-4/5 lg:w-1/2 font-retro ">
+                <h1 className='font-bold tracking-wide text-white sm:text-shadow-retro-green-sm text-3xl md:text-5xl'>{dapps.title}</h1>
+                <h2 className='text-green-400 text-base md:text-xl'>{dapps.subtitle}</h2>
+              </div>
+              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 py-6 gap-10'>
+                  {dapps.dapps.data.map((elem, idx)=>{
+                    return(
+                      <div key={elem.id} className='flex flex-col place-items-center border bg-white rounded-lg pt-8 pb-6 gap-6 shadow-xl shadow-zinc-900'>
+                        {elem.attributes.image.data? <img src={elem.image.data.attributes.url} className='max-h-32' alt={elem.image.data.attributes.name}/> : null}
+                        <div className='text-center space-y-6 px-4'>
+                          <div>
+                            <h1 className='text-lg sm:text-2xl font-medium text-shadow-sm'>{elem.attributes.title}</h1>
+                            <h2 className='text-base sm:text-lg text-gray-500'>{elem.attributes.subtitle}</h2>
+                          </div>
+                          <p className='text-sm sm:text-base'>{elem.attributes.description}</p>
+                        </div>
+                        <a href={elem.attributes.cta_link || "#"} className='text-sm text-white bg-green-600 hover:bg-green-700 transition duration-75 px-7 py-3 font-medium rounded-md mt-6 shadow-md shadow-slate-400'>
+                          {elem.attributes.cta_text}
+                        </a>
+                      </div>
+                    );
+                  })}
+              </div>
+              {dapps.cta_text && dapps.cta_link?
+                <div className='retro-btn w-4/5 sm:w-48 text-2xl font-bold tracking-wider font-retro mx-auto mt-12'>
+                  <Button href={dapps.cta_link}>{dapps.cta_text}</Button>
+                </div>
+              : null
+              }
+            </section>
+          </div>
+
+          {/* Recent Audits */}
           <section className="mt-6 md:mt-12 p-2 md:p-6 pb-12 overflow-hidden w-screen relative left-1/2 -translate-x-1/2">
               <Background />
             <div className="relative z-10 mx-auto lg:w-4/5 2xl:max-w-screen-xl flex flex-col gap-y-10">
@@ -77,39 +115,8 @@ function Home(props) {
           </section>
 
           
+          {/* Description */}
           <div className='w-screen relative left-1/2 -translate-x-1/2 bg-gray-primary'>
-            <section className='lg:w-4/5 2xl:max-w-screen-xl mx-4 px-4 py-12 space-y-14 sm:mx-auto border-l sm:border-l-0 lg:border-x lg:border-gray-500 border-opacity-40 '>
-              <div className="mt-12 md:w-4/5 lg:w-1/2 font-retro ">
-                <h1 className='font-bold tracking-wide text-white sm:text-shadow-retro-green-sm text-3xl md:text-5xl'>{dapps.title}</h1>
-                <h2 className='text-green-400 text-base md:text-xl'>{dapps.subtitle}</h2>
-              </div>
-              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 py-6 gap-10'>
-                  {dapps.dapps.data.map((elem, idx)=>{
-                    return(
-                      <div key={elem.id} className='flex flex-col place-items-center border bg-white rounded-lg pt-8 pb-6 gap-6 shadow-xl shadow-zinc-900'>
-                        {elem.attributes.image.data? <img src={elem.image.data.attributes.url} className='max-h-32' alt={elem.image.data.attributes.name}/> : null}
-                        <div className='text-center space-y-6 px-4'>
-                          <div>
-                            <h1 className='text-lg sm:text-2xl font-medium text-shadow-sm'>{elem.attributes.title}</h1>
-                            <h2 className='text-base sm:text-lg text-gray-500'>{elem.attributes.subtitle}</h2>
-                          </div>
-                          <p className='text-sm sm:text-base'>{elem.attributes.description}</p>
-                        </div>
-                        <a href={elem.attributes.cta_link || "#"} className='text-sm text-white bg-green-600 hover:bg-green-700 transition duration-75 px-7 py-3 font-medium rounded-md mt-6 shadow-md shadow-slate-400'>
-                          {elem.attributes.cta_text}
-                        </a>
-                      </div>
-                    );
-                  })}
-              </div>
-              {dapps.cta_text && dapps.cta_link?
-                <div className='retro-btn w-4/5 sm:w-48 text-2xl font-bold tracking-wider font-retro mx-auto mt-12'>
-                  <Button href={dapps.cta_link}>{dapps.cta_text}</Button>
-                </div>
-              : null
-              }
-            </section>
-
             <section className='lg:w-4/5 2xl:max-w-screen-xl mx-4 sm:mx-auto'>
               <div className='py-6 border-l sm:border-l-0 lg:border-x lg:border-gray-500 border-opacity-40 px-4'>
                 <div className="mt-12 md:w-4/5 lg:w-1/2 font-retro ">
@@ -137,6 +144,7 @@ function Home(props) {
             </section>
           </div>
 
+          {/* Community */}
           <section className="mt-24">
             <div className='flex flex-col gap-y-16'>
               <div className='sm:text-center flex flex-col gap-y-6 sm:place-items-center'>
