@@ -91,8 +91,8 @@ function AuditTab({data}) {
                 {audits.map(elem=>{
                   return(
                     <div key={elem.id} className='shadow-retro-gray bg-green-50/60'>
-                      <div className='flex max-h-48 md:max-h-64 lg:max-h-80'>
-                        <img className="max-h-48 md:max-h-64 lg:max-h-80 sm:shadow-2xl flex-shrink" src={elem.imageUrl} alt={elem.imageName} />
+                      <div className='flex flex-wrap'>
+                        <img className="max-h-48 md:max-h-48 sm:shadow-2xl flex-shrink" src="/test2.jpg" alt={elem.imageName} />
                         <div className='check_overflow flex flex-col justify-between bg-green-50/60 flex-grow p-2 overflow-x-hidden overflow-y-auto'>
                           <div className='space-y-3 mb-4'>
                             <h1 className='font-retro font-extrabold text-xl sm:text-2xl'>{elem.title}</h1>

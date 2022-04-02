@@ -13,9 +13,9 @@ function Audit(props){
                 objectFit="contain"
                 className="select-none"
             /> */}
-            <a href={props.href}>
+            <a href="/audits">
                 <img 
-                    src={props.imageSrc}
+                    src="test2.jpg"
                     alt={props.imageAlt}
                     className="object-contain select-none shadow-retro-green retro-btn max-h-96"
 

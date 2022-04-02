@@ -20,15 +20,15 @@ function Home(props) {
   const data = props.homepage
   const navigation = props.navigation.data
   const {introduction, recent_audits, dapps, description, community} = data.attributes
-  console.log(dapps)
+
   return (
     <Layout navigation={navigation}>
       <Head>
         <title>Frogchain</title>
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"/>
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"/>
+        <link rel="shortcut icon" href="/test2.jpg" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/test2.jpg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/test2.jpg"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/test2.jpg"/>
       </Head>
         
       <div className="pb-8 sm:pb-16 md:pb-20 w-full lg:pb-28 xl:pb-32">  

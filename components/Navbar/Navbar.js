@@ -13,8 +13,11 @@ function Navbar(props){
       name: elem.attributes.title,
       href: elem.attributes.slug.startsWith("/") ? elem.attributes.slug : `/${elem.attributes.slug}`
     }
+  }).sort((a,b)=>{
+    if (a.id < b.id) return -1;
+    if (a.id > b.id) return 1;
+    return 0;
   })
-
     return(
         
         <header className="">
@@ -24,10 +27,9 @@ function Navbar(props){
                   <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                     <div className="flex items-center justify-between w-full md:w-auto">
                       <a href="/">
-                        <span className="sr-only">Frogchain</span>
-                        <div className="w-10 h-10 hidden">
-                          {/* <Image src="/frog_construction.png" layout="responsive" objectFit="contain" width={45} height={45} /> */}
-                          <img src="/logo.png" alt="Logo frogchain" className='w-12 h-12'/>
+                        <span className="sr-only">Logo</span>
+                        <div className="w-16 h-10">
+                          <img src="/test2.jpg" alt="Logo" className=''/>
                         </div>
                       </a>
                       <div className="-mr-2 flex items-center md:hidden">

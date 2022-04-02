@@ -53,9 +53,9 @@ function Construction(){
                 >
                   <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded-2xl">
                         <div className='flex flex-col justify-center place-items-center'>
-                            <div className='w-48 h-48 md:h-72 md:w-72'>
+                            <div className='w-24 h-24 md:h-48 md:w-48'>
                                 {/* <Image src="/frog_construction.png" layout='responsive' width={400} height={400} priority={true}  /> */}
-                              <img src="/frog_construction.png" alt="Under construction" />
+                              <img src="/test2.jpg" alt="Under construction" />
                             </div>
                             <h1 className='font-sans text-base text-center'>Our website is currently under construction<br/>Some features might not work as expected. Thank you for your patience.</h1>
                         </div>
