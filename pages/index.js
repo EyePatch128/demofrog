@@ -24,7 +24,7 @@ function Home(props) {
   return (
     <Layout navigation={navigation}>
       <Head>
-        <title>Frogchain</title>
+        <title>Example - Retro</title>
         <link rel="shortcut icon" href="/test2.jpg" />
         <link rel="apple-touch-icon" sizes="180x180" href="/test2.jpg" />
         <link rel="icon" type="image/png" sizes="32x32" href="/test2.jpg"/>
