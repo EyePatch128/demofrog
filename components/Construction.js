@@ -57,7 +57,11 @@ function Construction(){
                                 {/* <Image src="/frog_construction.png" layout='responsive' width={400} height={400} priority={true}  /> */}
                               <img src="/test2.jpg" alt="Under construction" />
                             </div>
-                            <h1 className='font-sans text-base text-center'>Our website is currently under construction<br/>Some features might not work as expected. Thank you for your patience.</h1>
+                            <h1 className='font-sans text-base text-center'>
+                              This website is intended for demonstration purposes only.<br />
+                              Some features may not work accordingly or may be missing.<br />
+                              Thank you for understanding.
+                            </h1>
                         </div>
                     
     

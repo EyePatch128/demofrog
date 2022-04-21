@@ -11,7 +11,8 @@ function Navbar(props){
     return{
       id: elem.id,
       name: elem.attributes.title,
-      href: elem.attributes.slug.startsWith("/") ? elem.attributes.slug : `/${elem.attributes.slug}`
+      href: elem.attributes.slug.startsWith("/") ? elem.attributes.slug : `/${elem.attributes.slug}`,
+      disabled: elem.attributes.title == "Audits"? false: true
     }
   }).sort((a,b)=>{
     if (a.id < b.id) return -1;
@@ -44,15 +45,18 @@ function Navbar(props){
                   <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
                     {navigation && navigation.map((item) => {
                       const style = item.name != bigButton? 
-                        "font-medium text-gray-500 hover:text-gray-900" 
+                        `font-medium text-gray-500 hover:text-gray-900 ${item.disabled? "pointer-events-none" : ""}` 
                         :
-                        "inline-flex retro-btn border-2 border-gray-primary text-base tracking-wide font-medium box-border px-8 py-2 md:py-2 md:px-8 text-white bg-green-600 hover:bg-green-700"
+                        "inline-flex retro-btn border-2 border-gray-primary text-base tracking-wide font-medium box-border px-8 py-2 md:py-2 md:px-8 text-white bg-green-600 hover:bg-green-700 pointer-events-none"
                         
                         return (
-                          <Link key={item.name} href={item.href ||"#"} passHref>
+                          <Link key={item.name} href={!item.disabled? item.href : "#"} passHref>
+                            <span className={`${item.disabled? "cursor-not-allowed" : "cursor-pointer"}`}>
+
                             <a className={style}>
                               {item.name}
                             </a>
+                            </span>
                           </Link>
                         )
                     })}
@@ -88,7 +92,7 @@ function Navbar(props){
                     </div>
                     <div className="px-2 pt-2 pb-3 space-y-1">
                       {navigation && navigation.map((item) => {
-                        const style = "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                        const style = "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 pointer-events-none cursor-not-allowed"
                           if(item.name != bigButton)
                             return (
                               <Link key={item.name} href={item.href ||"#"} passHref>
@@ -101,8 +105,8 @@ function Navbar(props){
                     </div>
                       {navigation && navigation.map(item =>(
                         item.name == bigButton? 
-                          <Link key={item.name} href={item.href ||"#"} passHref>
-                            <a className="block w-full px-5 py-3 text-center font-medium text-green-600 bg-gray-50 hover:bg-gray-100">
+                          <Link key={item.name} href={!item.disabled? item.href : "#"} passHref>
+                            <a className={`block w-full px-5 py-3 text-center font-medium text-green-600 bg-gray-50 hover:bg-gray-100`}>
                               {item.name}
                             </a>
                           </Link> : null
