@@ -19,8 +19,7 @@
 
 module.exports = {
     images:{
-      domains: ['res.cloudinary.com'],   
-      loader: "custom"   
+      domains: ['res.cloudinary.com'] 
     },
     trailingSlash: true,
     exportPathMap: async function (

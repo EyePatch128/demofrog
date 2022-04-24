@@ -13,14 +13,18 @@ function Audit(props){
                 objectFit="contain"
                 className="select-none"
             /> */}
-            <a href="/audits">
+            <div className="shadow-retro-green retro-btn max-h-96">
+
+            <a href="/audits" className="">
                 <img 
-                    src="test2.jpg"
+                    src={props.imageSrc}
                     alt={props.imageAlt}
                     className="object-contain select-none shadow-retro-green retro-btn max-h-96"
 
                 />
+                
             </a>
+            </div>
         </div>
     );
 }
